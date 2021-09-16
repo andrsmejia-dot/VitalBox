@@ -28,9 +28,9 @@
         <br>
         <select name="tipoDocumento" id="tipoDocumento">
             <option value="Cedula">Cédula</option>
-            <option value="T. Identidad">Tarjeta de Identidad</option>
+            <option value="Identidad">Tarjeta Identidad</option>
             <option value="Pasaporte">Pasaporte</option>
-            <option value="Registro Civil">Registro Civil</option>
+            <option value="Civil">Registro Civil</option>
         </select>
     </div>
 
@@ -53,14 +53,14 @@
         <input type="text" class="form-control" id="peso" name="peso">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">Talla(metros)</label>
+        <label for="" class="form-label">Talla(metros) <i>Ejemplo: 1.72</i></label>
         <input type="text" class="form-control" id="talla" name="talla">
     </div>
 
     {{-- Botones --}}
     <div align="center">
     <a href="/usuarios" class="btn btn-outline-primary">Cancelar</a>
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn-primary" id="guardar">Guardar</button>
     </div>
 
 </form>

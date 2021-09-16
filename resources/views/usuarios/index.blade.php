@@ -72,7 +72,7 @@
 <script>
     $(document).ready(function() {
 $('#usuarios').DataTable({
-    "lengthMenu" : [[5,10,50,-1] , [5,10,50,"All"]],
+    "lengthMenu" : [[10,25,50,-1] , [10,25,50,"All"]],
     "language": {
     processing:     "Procesando...",
     search:         "Buscar:",
@@ -122,4 +122,8 @@ $('#usuarios').DataTable({
 
     ?>
 
+@endsection
+
+@section('footer')
+    <h6>Andrés Mejía Córdoba - 2021</h6>
 @endsection

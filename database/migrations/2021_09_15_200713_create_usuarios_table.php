@@ -17,7 +17,7 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',50);
-            $table->string('tipoDocumento',10);
+            $table->string('tipoDocumento');
             $table->integer('numeroDocumento');
             $table->date('fechaNacimiento');
             $table->float('peso');
