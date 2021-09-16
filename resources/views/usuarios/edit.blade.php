@@ -50,11 +50,11 @@
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Peso</label>
+        <label for="" class="form-label">Peso(Kg)</label>
         <input type="text" class="form-control" id="peso" name="peso" value="{{$usuario->peso}}">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">Talla</label>
+        <label for="" class="form-label">Talla(metros)</label>
         <input type="text" class="form-control" id="talla" name="talla" value="{{$usuario->talla}}">
     </div>
 

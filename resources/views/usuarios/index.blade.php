@@ -30,8 +30,10 @@
                 <th scope="col">TIPO DOCUMENTO</th>
                 <th scope="col">N° DOCUMENTO</th>
                 <th scope="col">FECHA NACIMIENTO</th>
+                <th scope="col">EDAD</th>
                 <th scope="col">PESO</th>
                 <th scope="col">TALLA</th>
+                <th scope="col">IMC</th>
                 <th scope="col">ACCIONES</th>
             </tr>
         </thead>
@@ -43,8 +45,11 @@
                 <th>{{ $usuario->tipoDocumento }}</th>
                 <th>{{ $usuario->numeroDocumento }}</th>
                 <th>{{ $usuario->fechaNacimiento }}</th>
+                {{-- Edad --}}
+                <th>{{ mostrarEdad($usuario->fechaNacimiento) }}</th>
                 <th>{{ $usuario->peso }}</th>
                 <th>{{ $usuario->talla }}</th>
+                <th>{{ round((floatval($usuario->peso)/floatval($usuario->talla)**2), 2) }}</th>
                 <th>
                     <form action="{{route('usuarios.destroy' , $usuario->id)}}" method="POST">
                         @csrf
@@ -93,4 +98,28 @@ $('#usuarios').DataTable({
 });
 } );
     </script>
+
+    {{-- Funciones para calcular la edad del usuario --}}
+    <?php 
+    function verfecha($vfecha)
+    {
+    $fch=explode("-",$vfecha);
+    $tfecha=$fch[2]."-".$fch[1]."-".$fch[0];
+    return $tfecha;
+    }
+    
+    function calcular_edad($fecha){
+    $dias = explode("-", $fecha, 3);
+    $dias = mktime(0,0,0,$dias[1],$dias[0],$dias[2]);
+    $edad = (int)((time()-$dias)/31556926 );
+    return $edad;
+    }
+
+    function mostrarEdad($fecha){
+        $fnaci = verfecha($fecha);
+        return calcular_edad($fnaci);
+    }
+
+    ?>
+
 @endsection
