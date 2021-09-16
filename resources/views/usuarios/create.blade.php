@@ -69,3 +69,4 @@
 @section('footer')
     <h6>Andrés Mejía Córdoba - 2021</h6>
 @endsection
+

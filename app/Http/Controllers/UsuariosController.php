@@ -40,6 +40,18 @@ class UsuariosController extends Controller
     {
         $usuario = new Usuario();
 
+
+        if(empty($request->get('nombre')) || empty($request->get('numeroDocumento')) || empty($request->get('peso')) || empty($request->get('talla'))){
+            echo'<script type="text/javascript">
+            alert("Debes de ingresar todos los campos");
+            window.location.href="/usuarios/create";
+                </script>';
+        }else if(!is_numeric($request->get('numeroDocumento'))){
+            echo'<script type="text/javascript">
+            alert("El número de identificación solo debe de contener números.");
+            window.location.href="/usuarios/create";
+                </script>';
+        }else{
             // Capturando info del formulario
         $usuario->nombre = $request->get('nombre');
         $usuario->tipoDocumento = $request->get('tipoDocumento');
@@ -47,21 +59,11 @@ class UsuariosController extends Controller
         $usuario->fechaNacimiento = $request->get('fechaNacimiento');
         $usuario->peso = $request->get('peso');
         $usuario->talla = $request->get('talla');
-
-
-        function alert($msg) {
-            echo "<script type='text/javascript'>alert('$msg');</script>";
-        }
-
-        if(empty($request->get('nombre')) || empty($request->get('numeroDocumento')) || empty($request->get('peso')) || empty($request->get('talla'))){
-            die('<h1 style="text-align:center; padding:20%"> ¡¡ ERROR, DEBES DE INGRESAR TODOS LOS CAMPOS !! </h1>');
-        }
-        if(!is_numeric($request->get('numeroDocumento'))){
-            die('<h1 style="text-align:center; padding:20%"> ¡¡ ERROR, EL DOCUMENTO SOLO DEBE CONTENER NÚMEROS !! </h1>');
-        }
         // Guardando la info
         $usuario->save();
         return redirect('/usuarios');
+        }
+
     }
 
     /**
@@ -98,6 +100,17 @@ class UsuariosController extends Controller
     {
         $usuario = Usuario::find($id);
 
+        if(empty($request->get('nombre')) || empty($request->get('numeroDocumento')) || empty($request->get('peso')) || empty($request->get('talla'))){
+            echo'<script type="text/javascript">
+            alert("Debes de ingresar todos los campos");
+            window.location.href="/usuarios";
+                </script>';
+        }else if(!is_numeric($request->get('numeroDocumento'))){
+            echo'<script type="text/javascript">
+            alert("El número de identificación solo debe de contener números.");
+            window.location.href="/usuarios";
+                </script>';
+        }else{
             // Capturando info del formulario
         $usuario->nombre = $request->get('nombre');
         $usuario->tipoDocumento = $request->get('tipoDocumento');
@@ -105,10 +118,10 @@ class UsuariosController extends Controller
         $usuario->fechaNacimiento = $request->get('fechaNacimiento');
         $usuario->peso = $request->get('peso');
         $usuario->talla = $request->get('talla');
-
         // Guardando la info
         $usuario->save();
         return redirect('/usuarios');
+        }
     }
 
     /**
