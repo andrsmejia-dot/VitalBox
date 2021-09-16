@@ -1,5 +1,8 @@
 <?php
 
+//Se importan los controladores
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Creando la conexión con el controlador de la página principal
+Route::get('/', HomeController::class);
+Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController');
